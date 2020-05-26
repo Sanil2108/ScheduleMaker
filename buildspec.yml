@@ -4,6 +4,7 @@ phases:
     install:
         runtime-versions:
             nodejs: 10
+    build:
         commands:
             - npm run build --prefix frontend/
             - aws s3 sync frontend/dist/ s3://schedule-maker-front-end --delete
