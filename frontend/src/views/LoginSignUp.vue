@@ -5,7 +5,7 @@
                 <img class="logo" src="interface.svg" />
                 <p v-show="showTitle" class="title"> Schedule maker </p>
                     <perfect-scrollbar>
-                        <h2> Login </h2>
+                        <h2> Login testing </h2>
                         <v-text-field
                             v-model="loginData.email"
                             label="Email"
