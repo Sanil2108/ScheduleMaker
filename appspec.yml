@@ -1,18 +1,15 @@
 version: 0.0
 os: linux
 files:
-  - source: backend/*
+  - source: backend.zip
     destination: /home/ubuntu/schedulemaker/
-# hooks:
-#   BeforeInstall:
-#     - location: scripts/install_dependencies
-#       timeout: 300
-#       runas: root
-#     - location: scripts/start_server
-#       timeout: 300
-#       runas: root
+hooks:
+  AfterInstall:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root
 #   ApplicationStop:
-#     - location: scripts/stop_server
+#     - location: scripts/stop.sh
 #       timeout: 300
 #       runas: root
 
