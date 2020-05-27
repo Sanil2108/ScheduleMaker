@@ -17,5 +17,6 @@ phases:
 artifacts:
     files:
         - backend.zip
+        - appspec.yml
     name:
         backendZip
