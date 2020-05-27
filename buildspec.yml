@@ -13,12 +13,11 @@ phases:
             - npm run build --prefix frontend/
             - aws s3 sync frontend/dist/ s3://schedule-maker-front-end --delete
             # Backend
-            - mkdir deployment
-            - zip -r deployment/backend.zip backend/
-            - cp appspec.yml deployment/
-            - cp start.sh deployment/
+            - zip -r backend.zip backend/
 artifacts:
     files:
-        - deployment/*
+        - backend.zip
+        - appspec.yml
+        - start.sh
     name:
         backendZip
