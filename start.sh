@@ -1,4 +1,5 @@
 #!/bin/bash
+ls -lat
 sudo unzip -o backend.zip
 
 sudo apt-get install -y python3 python3-pip
