@@ -1,10 +1,13 @@
 #!/bin/bash
-unzip -o backend.zip
+sudo unzip -o backend.zip
 
-apt-get install python3 python3-pip
-apt-get install virtualenv
+sudo apt-get install -y python3 python3-pip
+sudo apt-get install -y virtualenv
+sudo apt-get install -y mysql-server
+sudo apt-get install -y libmysqlclient-dev
 
-virtualenv -p python3 venv
+sudo virtualenv -p python3 venv
+sudo chown -R ubuntu venv
 source venv/bin/activate
 
 pip3 install -r backend/requirements.txt
