@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/schedulemaker/
 hooks:
   AfterInstall:
-    - location: scripts/start.sh
+    - location: start.sh
       timeout: 300
       runas: root
 #   ApplicationStop:
