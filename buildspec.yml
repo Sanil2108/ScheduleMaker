@@ -9,5 +9,13 @@ phases:
             - npm install --prefix frontend/
     build:
         commands:
+            # Frontend
             - npm run build --prefix frontend/
             - aws s3 sync frontend/dist/ s3://schedule-maker-front-end --delete
+            # Backend
+            - zip -r backend.zip backend/
+artifacts:
+    files:
+        - backend.zip
+    name:
+        backendZip
