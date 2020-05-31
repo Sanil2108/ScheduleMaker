@@ -2,7 +2,7 @@
 ls -lat
 root=/home/ubuntu/schedulemaker
 
-sudo unzip -o $root/backend.zip
+sudo unzip -o $root/backend.zip -d $root/
 
 sudo apt-get install -y python3 python3-pip
 sudo apt-get install -y virtualenv
