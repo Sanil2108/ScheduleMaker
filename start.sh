@@ -16,4 +16,4 @@ sudo chown -R ubuntu $root/venv
 source $root/venv/bin/activate
 
 pip3 install -r $root/backend/requirements.txt
-gunicorn --chdir ./backend/ schedulemaker.wsgi:application  --timeout 900
+gunicorn --chdir ./backend/ schedulemaker.wsgi:application  --timeout 900 --daemon
