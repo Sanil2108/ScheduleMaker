@@ -9,6 +9,9 @@ files:
     destination: /home/ubuntu/schedulemaker
   # - source: beforeInstall.sh
   #   destination: /home/ubuntu/schedulemaker
+permissions:
+  - object: '*.sh'
+    mode: 111
 hooks:
   # BeforeInstall:
   #   - location: beforeInstall.sh
