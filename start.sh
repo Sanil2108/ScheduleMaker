@@ -14,5 +14,5 @@ sudo chown -R ubuntu $root/venv
 source $root/venv/bin/activate
 
 pip3 install -r $root/backend/requirements.txt
-python3 $root/backend/manage.py --no-reload runserver &
+python3 $root/backend/manage.py --noreload runserver &
 lsof -i :8000
