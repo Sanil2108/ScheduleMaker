@@ -19,6 +19,8 @@ source $root/venv/bin/activate
 # Database setup
 sudo mysql -e "CREATE DATABASE schedulemaker;" >> $root/log;
 sudo mysql -e "GRANT ALL PRIVILEGES ON schedulemaker.* TO $(echo $DATABASE_USER)@'localhost'" >> $root/log;
+python3 $root/backend/manage.py makemigrations
+python3 $root/backend/manage.py migrate
 
 pip3 install -r $root/backend/requirements.txt
 gunicorn --chdir ./backend/ -b 127.0.0.1:8001 schedulemaker.wsgi:application  --timeout 900 --daemon
