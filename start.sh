@@ -14,5 +14,4 @@ sudo chown -R ubuntu $root/venv
 source $root/venv/bin/activate
 
 pip3 install -r $root/backend/requirements.txt
-python3 $root/backend/manage.py runserver --noreload &
-lsof -i :8000
+gunicorn --chdir ./backend/ schedulemaker.wsgi:application  --timeout 900
