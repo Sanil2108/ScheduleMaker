@@ -17,6 +17,8 @@ sudo chown -R ubuntu $root/venv
 source $root/venv/bin/activate
 
 # Database setup
+export DATABASE_USER=$(cat ~/DB_CREDENTIALS.csv | cut -d"," -f1)
+export DATABASE_PASSWORD=$(cat ~/DB_CREDENTIALS.csv | cut -d"," -f2)
 sudo mysql -e "CREATE DATABASE schedulemaker;" >> $root/log;
 sudo mysql -e "GRANT ALL PRIVILEGES ON schedulemaker.* TO $(echo $DATABASE_USER)@'localhost'" >> $root/log;
 python3 $root/backend/manage.py makemigrations
