@@ -21,4 +21,4 @@ sudo mysql -e "CREATE DATABASE schedulemaker;" >> $root/log;
 sudo mysql -e "GRANT ALL PRIVILEGES ON schedulemaker.* TO $(echo $DATABASE_USER)@'localhost'" >> $root/log;
 
 pip3 install -r $root/backend/requirements.txt
-gunicorn --chdir ./backend/ schedulemaker.wsgi:application  --timeout 900 --daemon
+gunicorn --chdir ./backend/ -b 127.0.0.1:8001 schedulemaker.wsgi:application  --timeout 900 --daemon

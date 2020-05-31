@@ -5,7 +5,7 @@ const ENVS = {
 
 const ENVIRONMENT = ENVS.PRODUCTION;
 
-const HOST = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8000/' : 'http://3.7.175.185/';
+const HOST = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8000/' : 'http://3.7.175.185/schedulemaker/api/';
 
 export const SIGN_UP_URL = () => (HOST + 'users/create/');
 export const LOGIN_URL = () => (HOST + 'users/login/');
