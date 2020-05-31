@@ -9,8 +9,8 @@ files:
     destination: /home/ubuntu/schedulemaker
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/schedulemaker/beforeInstall.sh
-      timeout: 300
+    - location: beforeInstall.sh
+      timeout: 1200
       runas: root
   AfterInstall:
     - location: /home/ubuntu/schedulemaker/start.sh
