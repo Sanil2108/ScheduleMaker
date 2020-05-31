@@ -9,6 +9,7 @@ sudo apt-get install -y virtualenv
 sudo apt-get install -y mysql-server
 sudo apt-get install -y libmysqlclient-dev
 sudo apt-get install -y apt-xapian-index
+sudo apt-get install -y gunicorn
 
 sudo virtualenv -p python3 $root/venv
 sudo chown -R ubuntu $root/venv
