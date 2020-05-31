@@ -13,10 +13,10 @@ permissions:
   - object: '*.sh'
     mode: 111
 hooks:
-  # BeforeInstall:
-  #   - location: beforeInstall.sh
-  #     timeout: 300
-  #     runas: root
+  BeforeInstall:
+    - location: beforeInstall.sh
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: start.sh
       timeout: 300
