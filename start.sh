@@ -23,4 +23,5 @@ python3 $root/backend/manage.py makemigrations
 python3 $root/backend/manage.py migrate
 
 pip3 install -r $root/backend/requirements.txt
-gunicorn --chdir ./backend/ -b 127.0.0.1:8001 schedulemaker.wsgi:application  --timeout 900 --daemon
+cd backend/
+gunicorn -b 127.0.0.1:8001 schedulemaker.wsgi:application  --timeout 900 --daemon
