@@ -19,5 +19,6 @@ artifacts:
         - backend.zip
         - appspec.yml
         - start.sh
+        - beforeInstall.sh
     name:
         backendZip
