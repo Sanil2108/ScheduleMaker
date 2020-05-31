@@ -15,3 +15,4 @@ source $root/venv/bin/activate
 
 pip3 install -r $root/backend/requirements.txt
 python3 $root/backend/manage.py --no-reload runserver &
+lsof -i :8000
