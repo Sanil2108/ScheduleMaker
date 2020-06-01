@@ -35,6 +35,7 @@
                     <h3 class="empty-heading heading-dark">No schedules here.</h3>
                     <div class="shadow-button-container">
                         <v-btn
+                            v-show="showCreateScheduleButton"
                             outlined
                             @click="newScheduleDialogOpen = true"
                         >
@@ -86,6 +87,10 @@ export default {
         showOwner: {
             type: Boolean,
             default: false,
+        },
+        showCreateScheduleButton: {
+            type: Boolean,
+            default: true,
         }
     },
     data() {

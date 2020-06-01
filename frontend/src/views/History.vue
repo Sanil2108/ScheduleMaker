@@ -20,7 +20,7 @@
                 :value="'tab-' + index"
             >
                 <div class="schedule-container">
-                    <schedule :schedule="getScheduleByDate(dates[index])"> </schedule>
+                    <schedule :showCreateScheduleButton="false" :schedule="getScheduleByDate(dates[index])"> </schedule>
                 </div>
             </v-tab-item>
         </v-tabs>

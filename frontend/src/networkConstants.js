@@ -17,4 +17,4 @@ export const CREATE_EVENT = (scheduleId) => (HOST + 'schedule/' + scheduleId + '
 export const DELETE_EVENT = (scheduleId, eventId) => (HOST + 'schedule/' + scheduleId + '/events/' + eventId);
 export const CREATE_COMMENT = (scheduleId) => (HOST + 'schedule/' + scheduleId + '/comments/');
 export const EDIT_EVENT = (scheduleId, eventId) => (HOST + 'schedule/' + scheduleId + '/events/' + eventId);
-export const SCHEDULES_LIST = () => HOST + 'schedule/list';
+export const SCHEDULES_LIST = () => HOST + 'schedule/list/';
