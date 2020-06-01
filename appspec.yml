@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+files:
+  - source: backend.zip
+    destination: /home/ubuntu/schedulemaker
+  - source: appspec.yml
+    destination: /home/ubuntu/schedulemaker
+  - source: start.sh
+    destination: /home/ubuntu/schedulemaker
+  # - source: beforeInstall.sh
+  #   destination: /home/ubuntu/schedulemaker
+permissions:
+  - object: '*.sh'
+    mode: 111
+hooks:
+  BeforeInstall:
+    - location: beforeInstall.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: start.sh
+      timeout: 300
+      runas: root
+#   ApplicationStop:
+#     - location: scripts/stop.sh
+#       timeout: 300
+#       runas: root
+
