@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <parallax-background />
-        <navigation-drawer v-show="!onPublicPage">
+        <navigation-drawer v-show="showNavigationDrawer">
             <router-link
                 v-for="item in NAVIGATION_DRAWER_ITEMS"
                 :key="item.path"
@@ -147,6 +147,9 @@ export default {
         },
         onPublicPage() {
             return this.$route.path === '/login' || this.$route.path.match('/schedule/*') !== null;
+        },
+        showNavigationDrawer() {
+            return this.user !== null;
         },
         snackBarClass() {
             if (!this.notification) {

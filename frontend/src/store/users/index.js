@@ -27,7 +27,7 @@ export default {
             return state.user;
         },
         userName(state) {
-            return state.user.name;
+            return (state.user) ? state.user.name : '';
         },
         userEmail(state) {
             return state.user.email;
