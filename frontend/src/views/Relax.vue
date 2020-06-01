@@ -1,9 +1,14 @@
 <template>
-    <div>
-        <h1 class="home-heading"> Relax </h1><br>
-        <h2> Today's schedule </h2>
-        <div class="home-card">
-            <div style="height: 40vh" />
+    <div class="root-card">
+        <span class="heading-container">
+            <h1> Relax </h1>
+        </span>
+        <div class="card">
+            <span>
+                <div style="font-size: 4rem; margin-bottom: 10px">🚧</div>
+                <div style="font-size: 1.2rem;">Hey! Wait! Don't go out! It's unsafe! Wild Pokémon live in tall grass!</div>
+                <div style="font-size: 1rem; color: #7e7e7e;"><i>We're hard at work trying to get you your first Pokemon!</i></div>
+            </span>
         </div>
     </div>
 </template>
@@ -11,7 +16,7 @@
 <script>
 
 export default {
-    name: 'Home',
+    name: 'Relax',
     components: {
 
     }
@@ -44,12 +49,8 @@ h2 {
     margin-left: $LEFT_MARGIN;
 }
 
-.home-card {
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 10px #00000044;
-    background-color: #fff;
-    width: $WIDTH;
-    left: $LEFT_MARGIN;
-    position: relative;
+.card {
+    padding: 100px 30px;
+    text-align: center;
 }
 </style>

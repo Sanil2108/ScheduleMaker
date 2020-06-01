@@ -87,6 +87,9 @@
 <script>
 import { mapActions } from 'vuex';
 import * as ClipboardJS from 'clipboard';
+import {
+    FRONT_END_URL
+} from '../networkConstants';
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -107,7 +110,7 @@ export default {
     },
     computed: {
         scheduleURL() {
-            return `localhost:8080/schedule/${this.scheduleId}/`;
+            return `${FRONT_END_URL}schedule/${this.scheduleId}/`;
         }
     },
     mounted() {

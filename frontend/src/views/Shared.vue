@@ -50,7 +50,6 @@ export default {
             this.loadingSchedules = true;
             axios.get(SCHEDULES_LIST_URL()).then((response) => {
                 this.sharedSchedules = response.data
-                console.log(this.sharedSchedules);
                 this.loadingSchedules = false;
             }).catch((error) => {
                 if (error.response) {

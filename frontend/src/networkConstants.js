@@ -6,6 +6,7 @@ const ENVS = {
 const ENVIRONMENT = ENVS.PRODUCTION;
 
 const HOST = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8000/' : 'http://3.7.175.185/schedulemaker/api/';
+export const FRONT_END_URL = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8080/' : 'http://schedule-maker-front-end.s3-website.ap-south-1.amazonaws.com/';
 
 export const SIGN_UP_URL = () => (HOST + 'users/create/');
 export const LOGIN_URL = () => (HOST + 'users/login/');

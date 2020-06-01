@@ -247,7 +247,6 @@ export default {
             });
         },
         async updateSchedule({ commit, dispatch }, { sharedTo, publicEnabled, scheduleId }) {
-            console.log(scheduleId, sharedTo, publicEnabled)
             await new Promise((resolve, reject) => {
                 axios.patch(SCHEDULE_URL(scheduleId), { public: publicEnabled, shared_to: sharedTo }).then((response) => {
                     dispatch('ui/manageNewNotification', { message: 'Schedule sharing updated successfully', type: 'success' }, { root: true });
