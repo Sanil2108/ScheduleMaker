@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card" style="margin-top: 1vh; height: 50vh">
+        <div class="card" style="margin-top: 1vh; height: 50vh" ref="parent-card">
             <perfect-scrollbar ref="timeFramesContainer">
                 <div class="time-frame" v-for="label in timeFrameLabels" :key="label">
                     <div class="time-frame--label"> {{ label }} </div>
@@ -88,6 +88,11 @@ export default {
     mounted() {
         this.timeFramesContainerWidth =
             this.$refs.timeFramesContainer.$el.scrollWidth;
+
+        this.$refs['parent-card'].addEventListener('mousewheel', (event) => {
+            this.$refs.timeFramesContainer.$el.scrollLeft += event.deltaY;
+            event.preventDefault();
+        });
     },
     methods: {
         getTimeInHours(timeString) {

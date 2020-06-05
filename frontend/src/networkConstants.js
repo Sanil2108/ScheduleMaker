@@ -3,7 +3,7 @@ const ENVS = {
     DEVELOPMENT: 'dev',
 }
 
-const ENVIRONMENT = ENVS.PRODUCTION;
+const ENVIRONMENT = ENVS.DEVELOPMENT;
 
 const HOST = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8000/' : 'http://3.7.175.185/schedulemaker/api/';
 export const FRONT_END_URL = ENVIRONMENT === ENVS.DEVELOPMENT ? 'http://localhost:8080/' : 'http://schedule-maker-front-end.s3-website.ap-south-1.amazonaws.com/';
