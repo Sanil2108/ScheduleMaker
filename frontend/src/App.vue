@@ -90,6 +90,7 @@ export default {
     mounted() {
         this.$nextTick(() => {
             window.eventBus.$on('CHANGE_ROUTE', (newRoute) => { this.$router.push(newRoute) })
+            window.eventBus.$on('RELOAD_SCHEDULES', this.getAllSchedules.bind(null, this.dates));
         });
 
         (async () => {

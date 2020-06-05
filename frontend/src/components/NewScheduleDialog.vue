@@ -71,7 +71,7 @@ export default {
         dayAfterTomorrow.setDate((new Date()).getDate() + 2);
 
         return {
-            publicEnabled: true,
+            publicEnabled: false,
             shared_to: [],
             selectedDayTitle: 'Today',
             days: [
@@ -105,7 +105,7 @@ export default {
         onClickComplete() {
             const schedule = {
                 date: this.days[this.dayTitles.indexOf(this.selectedDayTitle)].date,
-                publicEnabled: this.publicEnabled,
+                'public': this.publicEnabled,
             }
 
             this.createSchedule(schedule);

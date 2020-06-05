@@ -197,6 +197,7 @@ export default {
                 });
                 if (response.status === 200) {
                     window.eventBus.$emit('CHANGE_ROUTE', '/');
+                    window.eventBus.$emit('RELOAD_SCHEDULES');
                 }
             } finally {
                 this.loading = false;

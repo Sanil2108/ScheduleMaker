@@ -142,6 +142,7 @@ h4 {
         height: 100%;
         border-radius: 10px;
         transition: all 0.4s;
+        cursor: default;
 
         &:hover {
             min-width: fit-content !important;
