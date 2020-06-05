@@ -52,7 +52,7 @@ class ScheduleView(APIView):
 
       return Response(ScheduleSerializer(schedule).data, status = status.HTTP_200_OK)
     else:
-      return Response(status = status.HTTP_403_FORBIDDEN)
+      return Response('You are not permitted to perform this action', status = status.HTTP_403_FORBIDDEN)
 
   def delete(self, request, schedule_id = None):
     if schedule_id is None or Schedule.objects.filter(pk = schedule_id).count() is 0:
@@ -64,7 +64,7 @@ class ScheduleView(APIView):
       schedule.delete()
       return Response(status = status.HTTP_200_OK)
     else:
-      return Response(status = status.HTTP_403_FORBIDDEN)
+      return Response('You are not permitted to perform this action', status = status.HTTP_403_FORBIDDEN)
 
   def get(self, request, schedule_id = None):
     if schedule_id is None or Schedule.objects.filter(pk = schedule_id).count() is 0:
@@ -78,7 +78,7 @@ class ScheduleView(APIView):
       if user is not None and schedule.is_visible_to_user(user):
         return Response(ScheduleSerializer(schedule).data, status = status.HTTP_200_OK)
       else:
-        return Response(status = status.HTTP_403_FORBIDDEN)
+        return Response('You are not permitted to perform this action', status = status.HTTP_403_FORBIDDEN)
 
   def post(self, request, schedule_id = None):
     user = User.objects.get_auth_user_with_token(request.META.get('HTTP_AUTHORIZATION'))

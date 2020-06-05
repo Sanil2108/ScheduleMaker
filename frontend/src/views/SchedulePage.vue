@@ -7,7 +7,7 @@
         >
         </schedule>
         <v-progress-circular
-            v-else
+            v-show="scheduleLoading"
             :indeterminate="true"
             :size="64"
             :width="8"
@@ -45,7 +45,6 @@ export default {
             this.scheduleLoading = true;
             axios.get(SCHEDULE_URL(this.$route.params.scheduleId)).then((response) => {
                 this.currentSchedule = response.data;
-                this.scheduleLoading = false;
             }).catch((error) => {
                 if (error.response) {
                     this.manageNewNotification({ message: error.response.data, type: 'error' });
@@ -53,6 +52,7 @@ export default {
                 else {
                     this.manageNewNotification({ message: 'Unknown error while retrieving schedule', type: 'error' });
                 }
+            }).finally(() => {
                 this.scheduleLoading = false;
             })
         }
