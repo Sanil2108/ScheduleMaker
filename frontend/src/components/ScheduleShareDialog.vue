@@ -114,11 +114,13 @@ export default {
         }
     },
     mounted() {
-        this.clipboard = new ClipboardJS('.copy-link-button', {
-            text: function(trigger) {
-                return scheduleURL;
-            }
-        });
+        this.$nextTick(() => {
+            this.clipboard = new ClipboardJS('.copy-link-button', {
+                text: function(trigger) {
+                    return scheduleURL;
+                }
+            });
+        })
     },
     beforeDestroy() {
         this.clipboard.destroy();

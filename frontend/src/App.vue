@@ -95,7 +95,10 @@ export default {
 
         (async () => {
             await this.loadCurrentUserFromLocalStorage();
-            this.getAllSchedules(this.dates);
+
+            if (this.user !== null && this.user !== undefined && Object.keys(this.user).length !== 0) {
+                this.getAllSchedules(this.dates);
+            }
             if (!this.onPublicPage && !await this.validateCurrentUser()) {
                 this.$router.push('/login');
             }
