@@ -94,13 +94,14 @@ export default {
         });
 
         (async () => {
-            if (!this.onPublicPage) {
-                await this.loadCurrentUserFromLocalStorage();
-                this.getAllSchedules(this.dates);
-            }
+            await this.loadCurrentUserFromLocalStorage();
+            this.getAllSchedules(this.dates);
             if (!this.onPublicPage && !await this.validateCurrentUser()) {
                 this.$router.push('/login');
             }
+            this.$nextTick(() => {
+                window.eventBus.$emit('USER_LOADED');
+            })
         })();
     },
     methods: {

@@ -35,7 +35,9 @@ export default {
         }
     },
     mounted() {
-        this.loadSchedule();
+        this.$nextTick(() => {
+            window.eventBus.$on('USER_LOADED', this.loadSchedule);
+        });
     },
     methods: {
         ...mapActions({

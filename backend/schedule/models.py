@@ -20,7 +20,7 @@ class ScheduleManager(models.Manager):
   def get_all_visible_to_user(self, user):
     if user is None:
       return list(Schedule.objects.filter(public = True))
-    return list(Schedule.objects.filter(Q(public = True) | Q(owner = user)).filter(date__gte = datetime.datetime.now())) + list(user.schedule_set.all())
+    return list(set(list(Schedule.objects.filter(Q(public = True) | Q(owner = user)).filter(date__gte = datetime.datetime.now())) + list(user.schedule_set.all()) + list(user.shared_schedules.all())))
   
   def get_schedules_by_date(self, user, dates):
     return list(user.schedule_set.filter(date__in = dates))    

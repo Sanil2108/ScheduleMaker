@@ -30,8 +30,12 @@ class ScheduleListView(APIView):
   def get(self, request):
     user = User.objects.get_auth_user_with_token(request.META.get('HTTP_AUTHORIZATION'))
 
+    if not user:
+      return Response('You need to be logged in to see shared schedules', status=status.HTTP_401_UNAUTHORIZED)
+
     many_schedule_serializers = ScheduleSerializer(
-      Schedule.objects.get_all_visible_to_user(user),
+      # Schedule.objects.get_all_visible_to_user(user),
+      user.shared_schedules.all(),
       many = True
     )
 

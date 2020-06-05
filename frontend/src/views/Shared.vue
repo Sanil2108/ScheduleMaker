@@ -40,7 +40,9 @@ export default {
 
     },
     mounted() {
-        this.loadSharedSchedules();
+        this.$nextTick(() => {
+            window.eventBus.$on('USER_LOADED', this.loadSharedSchedules);
+        });
     },
     methods: {
         ...mapActions({
