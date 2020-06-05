@@ -48,7 +48,7 @@
                 <!-- </transition> -->
             </span>
         </div>
-        <div class="buttons-bar">
+        <div class="buttons-bar" v-show="!readOnly">
             <transition name="fade">
                 <div
                     v-show="editing"
@@ -76,7 +76,18 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    props: ['event', 'schedule'],
+    props: {
+        event: {
+            type: Object,
+        },
+        schedule: {
+            type: Object,
+        },
+        readOnly: {
+            type: Boolean,
+            default: false,
+        }
+    },
     data() {
         return {
             deleting: false,

@@ -8,6 +8,7 @@
                     class="shadow-button"
                     style="margin-left: 5px"
                     @click="newEventDialogOpen = true"
+                    v-show="!readOnly"
                 ><span class="material-icons" style="font-size: 2rem; display: block">add</span></div>
             </span>
             <div style="flex-grow:1" />
@@ -18,7 +19,7 @@
             </div>
         </div>
         <transition-group name="flip-list">
-            <event-card :schedule="schedule" v-for="event in localEvents" :key="event.id" :event="event" />
+            <event-card :readOnly="readOnly" :schedule="schedule" v-for="event in localEvents" :key="event.id" :event="event" />
         </transition-group>
 
         <new-event-dialog :open="newEventDialogOpen" :schedule="schedule" :onClose="() => { newEventDialogOpen = false }" />
@@ -32,7 +33,15 @@ import EventCard from './EventCard.vue';
 import NewEventDialog from './NewEventDialog.vue';
 
 export default {
-    props: ['schedule'],
+    props: {
+        schedule: {
+            type: Object,
+        },
+        readOnly: {
+            type: Boolean,
+            default: false,
+        },
+    },
     data() {
         return {
             SORTED_BY_CATEGORY: 'sort_category',

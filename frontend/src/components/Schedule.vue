@@ -11,12 +11,14 @@
                         class="shadow-button"
                         style="float: right; margin-left: 5px"
                         @click="deleteSchedule(schedule.id)"
+                        v-show="isLoggedInUserOwner"
                     ><span class="material-icons" style="font-size: 2rem; display: block">delete</span></div>
                     <div
                         :class="{ 'disabled': !uiEnabled }"
                         class="shadow-button"
                         style="float: right"
                         @click="shareScheduleDialogOpen = true"
+                        v-show="isLoggedInUserOwner"
                     ><span class="material-icons" style="font-size: 2rem; display: block">share</span></div>
                 </span>
             </span>
@@ -25,7 +27,7 @@
             </p>
             <category-list-view :categories="scheduleCategories" />
             <schedule-graph :categories="scheduleCategories" :schedule="schedule" />
-            <event-list :schedule="schedule" v-if="fullSchedule" />
+            <event-list :schedule="schedule" v-if="fullSchedule" :readOnly="!isLoggedInUserOwner" />
             <comment-list :schedule="schedule" v-if="fullSchedule"> </comment-list>
             <new-comment-card :schedule="schedule" v-if="fullSchedule" />
         </span>
@@ -114,7 +116,12 @@ export default {
             getAllCategoriesBySchedule: 'schedule/getAllCategoriesBySchedule',
             getAllEventsBySchedule: 'schedule/getAllEventsBySchedule',
             uiEnabled: 'schedule/isUIEnabled',
+            user: 'users/user',
         }),
+        isLoggedInUserOwner() {
+            return this.user !== undefined && this.user !== null &&
+                Object.keys(this.user).length !== 0 && this.user.email === this.schedule.owner;
+        },
         scheduleExists() {
             return this.schedule !== null;
         },
