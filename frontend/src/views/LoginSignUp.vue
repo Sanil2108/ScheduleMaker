@@ -4,39 +4,40 @@
             <div class="card root-card" v-show="showLoginView">
                 <img class="logo" src="interface.svg" />
                 <p v-show="showTitle" class="title"> Schedule maker </p>
-                    <perfect-scrollbar>
-                        <h2> Login </h2>
-                        <v-text-field
-                            v-model="loginData.email"
-                            label="Email"
-                            :rules="[rules.required, rules.emailValidation]"
-                        ></v-text-field>
-                        <v-text-field
-                            label="Password"
-                            :append-icon="showPassword ? 'visibility' : 'visibility_off'"
-                            :type="showPassword ? 'text' : 'password'"
-                            @click:append="showPassword = !showPassword"
-                            v-model="loginData.password"
-                            :rules="[rules.required]"
-                        ></v-text-field>
+                <perfect-scrollbar>
+                    <h2> Login </h2>
+                    <v-text-field
+                        v-model="loginData.email"
+                        label="Email"
+                        :rules="[rules.required, rules.emailValidation]"
+                    ></v-text-field>
+                    <v-text-field
+                        label="Password"
+                        :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+                        :type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
+                        v-model="loginData.password"
+                        :rules="[rules.required]"
+                    ></v-text-field>
 
-                        <v-btn
-                            outlined
-                            @click="loginButtonClick"
-                            :loading="loading"
-                            :disabled="loginButtonDisabled"
-                        >
-                            Login
-                        </v-btn>
-                        <v-btn
-                            outlined
-                            :disabled="loading"
-                            @click="signUpViewButtonClick"
-                            style="margin-bottom: 35px"
-                        >
-                            Sign up
-                        </v-btn>
-                    </perfect-scrollbar>
+                    <v-btn
+                        outlined
+                        @click="loginButtonClick"
+                        :loading="loading"
+                        :disabled="loginButtonDisabled"
+                    >
+                        Login
+                    </v-btn>
+                    <v-btn
+                        outlined
+                        :disabled="loading"
+                        @click="signUpViewButtonClick"
+                        style="margin-bottom: 15px"
+                    >
+                        Sign up
+                    </v-btn>
+                    <div class="temp-schedule-text">Or check out a temporary schedule <a :href="TESTING_SCHEDULE_URL">here</a></div>
+                </perfect-scrollbar>
             </div>
         </transition>
 
@@ -98,6 +99,9 @@
 <script>
 import { PerfectScrollbar } from 'vue2-perfect-scrollbar'
 import { mapActions } from 'vuex';
+import {
+    TESTING_SCHEDULE_URL
+} from '../networkConstants';
 
 const VIEWS= {
     LOGIN: 'login',
@@ -132,7 +136,8 @@ export default {
                 required: value => (value.length !== 0) ? true : 'Required',
                 matchPassword: value => (value === this.signUpData.password) ? true : `Passwords don't match`,
                 emailValidation: value => (EMAIL_REGEX.test(String(value)) ? true : 'Email is not valid'),
-            }
+            },
+            TESTING_SCHEDULE_URL,
         }
     },
     computed: {
@@ -244,6 +249,17 @@ $LEFT_MARGIN: 40px;
 h2 {
     color: #343434;
     margin: $LOGO_TITLE_MARGIN 0px 30px $LEFT_MARGIN;
+}
+
+.temp-schedule-text {
+    font-size: 0.85rem;
+    margin: 0px 20px 20px;
+    text-align: center;
+
+    a {
+        color: #1565c0;
+        text-decoration: underline;
+    }
 }
 
 // Scale and slide right
