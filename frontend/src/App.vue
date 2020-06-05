@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <parallax-background />
-        <navigation-drawer v-show="showNavigationDrawer">
+        <navigation-drawer v-if="showNavigationDrawer">
             <router-link
                 v-for="item in NAVIGATION_DRAWER_ITEMS"
                 :key="item.path"
@@ -16,6 +16,14 @@
                 <div class="item" @click="logoutUser"><span> 🚪 Logout </span></div>
             </router-link>
         </navigation-drawer>
+        <span v-else-if="!onLoginPage" class="login-redirect-button-container">
+            <v-btn
+                outlined
+                @click="() => { $router.push('/login') }"
+            >
+                home
+            </v-btn>
+        </span>
         <div class="content-container">
             <transition :name="routeAnimationName()" mode="out-in">
                 <router-view />
@@ -145,11 +153,14 @@ export default {
 
             return dates;
         },
+        onLoginPage() {
+            return this.$route.path === '/login';
+        },
         onPublicPage() {
-            return this.$route.path === '/login' || this.$route.path.match('/schedule/*') !== null;
+            return this.onLoginPage || this.$route.path.match('/schedule/*') !== null;
         },
         showNavigationDrawer() {
-            return this.user !== null;
+            return this.user !== null && this.user !== undefined && Object.keys(this.user).length !== 0;
         },
         snackBarClass() {
             if (!this.notification) {
@@ -213,6 +224,16 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
+}
+
+.login-redirect-button-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    * {
+        color: white !important;
+    }
 }
 
 .snackbar {
