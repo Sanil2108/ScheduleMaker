@@ -230,10 +230,10 @@ export default {
                 return;
             }
 
-            const startTimeHours = parseInt(this.startTime.hours) + ((this.startTime.meridian === 'PM' && parseInt(this.endTime.hours < 12)) ? 12 : 0);
+            const startTimeHours = parseInt(this.startTime.hours) + ((this.startTime.meridian === 'PM' && parseInt(this.startTime.hours) < 12) ? 12 : 0);
             this.event.start_time = `${(startTimeHours < 10) ? '0' + startTimeHours : startTimeHours}:${(this.startTime.minutes < 10) ? '0' + this.startTime.minutes : this.startTime.minutes}`
 
-            const endTimeHours = parseInt(this.endTime.hours) + ((this.endTime.meridian === 'PM' && parseInt(this.endTime.hours < 12)) ? 12 : 0);
+            const endTimeHours = parseInt(this.endTime.hours) + ((this.endTime.meridian === 'PM' && parseInt(this.endTime.hours) < 12) ? 12 : 0);
             this.event.end_time = `${(endTimeHours < 10) ? '0' + endTimeHours : endTimeHours}:${(this.endTime.minutes < 10) ? '0' + this.endTime.minutes : this.endTime.minutes}`
 
             this.createEvent({ event: this.event, scheduleId: this.schedule.id });
