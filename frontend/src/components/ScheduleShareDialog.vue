@@ -10,8 +10,8 @@
             <div class="form-container share-schedule-dialog-form">
                 <span class="schedule-link-container">
                     <p style="color: #444444; display: inline-block; margin-bottom: 4px"> Link </p>
-                    <button class="copy-link-button"> Copy </button>
-                    <v-text-field filled :disabled="true" style="cursor: pointer" :value="scheduleURL">" </v-text-field>
+                    <button class="copy-link-button" @click="copyURL"> Copy </button>
+                    <v-text-field filled :disabled="true" ref="copyTextField" style="cursor: pointer" :value="scheduleURL">" </v-text-field>
                 </span>
 
                 <div class="form-container__row">
@@ -86,7 +86,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-import * as ClipboardJS from 'clipboard';
 import {
     FRONT_END_URL
 } from '../networkConstants';
@@ -113,15 +112,6 @@ export default {
             return `${FRONT_END_URL}schedule/${this.scheduleId}/`;
         }
     },
-    mounted() {
-        this.$nextTick(() => {
-            this.clipboard = new ClipboardJS('.copy-link-button', {
-                text: function(trigger) {
-                    return scheduleURL;
-                }
-            });
-        })
-    },
     beforeDestroy() {
         this.clipboard.destroy();
     },
@@ -129,6 +119,13 @@ export default {
         ...mapActions({
             'updateSchedule': 'schedule/updateSchedule',
         }),
+        copyURL() {
+            const input = this.$refs.copyTextField.$el.querySelector('input');
+            input.disabled = false;
+            input.select()
+            document.execCommand('copy');
+            input.disabled = true;
+        },
         onClickComplete() {
             this.updateSchedule({ sharedTo: this.localSharedTo, publicEnabled: this.localPublic, scheduleId: this.scheduleId });
 
