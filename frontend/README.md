@@ -1,4 +1,6 @@
 # schedule-maker
+This is an application to track your schedules
+
 
 ## Project setup
 ```
