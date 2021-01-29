@@ -36,7 +36,6 @@
                     >
                         Sign up
                     </v-btn>
-                    <div class="temp-schedule-text">Or check out a temporary schedule <a :href="TESTING_SCHEDULE_URL">here</a></div>
                 </perfect-scrollbar>
             </div>
         </transition>
